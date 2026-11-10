@@ -2,216 +2,572 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kasyap M | DevOps Engineer Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasyap M | DevOps Engineer</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        header {
-            background-color: #222;
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+:root {
+    --bg: #080d1a;
+    --card: rgba(19, 29, 49, 0.75);
+    --cyan: #00e5ff;
+    --purple: #a855f7;
+    --white: #f5f7ff;
+    --muted: #a0aec0;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    overflow-x: hidden;
+}
 
-        nav a:hover {
-            color: #00bcd4;
-        }
+/* Animated background */
 
-        .hero {
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: var(--purple);
+    filter: blur(180px);
+    opacity: 0.15;
+    top: -150px;
+    left: -150px;
+    z-index: -1;
+    animation: float 8s infinite alternate ease-in-out;
+}
 
-        .hero h2 {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
+body::after {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    background: var(--cyan);
+    filter: blur(180px);
+    opacity: 0.12;
+    bottom: -150px;
+    right: -100px;
+    z-index: -1;
+    animation: float 10s infinite alternate-reverse ease-in-out;
+}
 
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 25px;
-        }
+@keyframes float {
+    from { transform: translate(0, 0); }
+    to { transform: translate(100px, 80px); }
+}
 
-        .btn {
-            background-color: white;
-            color: #007bff;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+/* Navbar */
 
-        section {
-            padding: 50px 20px;
-            text-align: center;
-        }
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(8, 13, 26, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    z-index: 1000;
+}
 
-        section h2 {
-            margin-bottom: 20px;
-            color: #007bff;
-        }
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+}
 
-        .services {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+.logo span {
+    color: var(--cyan);
+}
 
-        .card {
-            background-color: white;
-            padding: 30px;
-            width: 250px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+nav {
+    display: flex;
+    gap: 30px;
+}
 
-        .card h3 {
-            margin-bottom: 15px;
-        }
+nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    transition: 0.3s;
+}
 
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+nav a:hover {
+    color: var(--cyan);
+}
 
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
+/* Hero */
 
-            nav a {
-                margin: 5px;
-            }
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 130px 20px 80px;
+}
 
-            .hero h2 {
-                font-size: 26px;
-            }
-        }
-    </style>
+.hero-content {
+    max-width: 900px;
+    animation: fadeUp 1.2s ease;
+}
+
+.tag {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid rgba(0,229,255,0.4);
+    border-radius: 30px;
+    color: var(--cyan);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 30px;
+    background: rgba(0,229,255,0.06);
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 75px);
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero h2 {
+    font-size: clamp(20px, 3vw, 30px);
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.primary {
+    background: linear-gradient(90deg, var(--cyan), #38bdf8);
+    color: #08111e;
+}
+
+.secondary {
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0,229,255,0.3);
+}
+
+/* Sections */
+
+section:not(.hero) {
+    padding: 100px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.section-title h2 span {
+    color: var(--cyan);
+}
+
+.section-title p {
+    color: var(--muted);
+}
+
+/* About */
+
+.about-box {
+    max-width: 850px;
+    margin: auto;
+    padding: 40px;
+    border: 1px solid rgba(0,229,255,0.15);
+    background: var(--card);
+    border-radius: 18px;
+    line-height: 2;
+    color: var(--muted);
+    text-align: center;
+    transition: 0.4s;
+}
+
+.about-box:hover {
+    border-color: var(--cyan);
+    transform: translateY(-5px);
+}
+
+/* Skills */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 35px 25px;
+    border-radius: 16px;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    transition: 0.5s;
+}
+
+.card:hover::before {
+    left: 0;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--cyan);
+    box-shadow: 0 10px 35px rgba(0,229,255,0.1);
+}
+
+.card .icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: var(--cyan);
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* Contact */
+
+.contact-box {
+    max-width: 650px;
+    margin: auto;
+    padding: 40px;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    text-align: center;
+}
+
+.contact-box p {
+    color: var(--muted);
+    margin: 20px 0;
+}
+
+.contact-box a {
+    color: var(--cyan);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-box a:hover {
+    color: var(--purple);
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--muted);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 13px;
+}
+
+/* Animations */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile */
+
+@media(max-width: 700px) {
+    header {
+        padding: 18px 5%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    section:not(.hero) {
+        padding: 75px 6%;
+    }
+
+    .hero {
+        padding-top: 160px;
+    }
+
+    .about-box {
+        padding: 25px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Kasyap M</h1>
+<header>
+    <div class="logo">KASYAP<span>.</span></div>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <section id="home" class="hero">
-        <h2>Hello, I'm Kasyap M!</h2>
-        <p>Aspiring DevOps Engineer</p>
+<!-- Hero -->
+
+<section id="home" class="hero">
+    <div class="hero-content">
+
+        <div class="tag">WELCOME TO MY PORTFOLIO</div>
+
+        <h1>Hi, I'm <span>Kasyap M</span></h1>
+
+        <h2>Aspiring DevOps Engineer</h2>
+
         <p>
-            Specialized in AWS | Kubernetes | Docker |
-            Jenkins | Terraform | CI/CD Pipeline
+            Passionate about Cloud Computing, Automation,
+            Containerization and Infrastructure as Code.
+            Focused on building scalable, reliable and
+            automated deployment environments.
         </p>
-        <br><br>
-        <a href="#about" class="btn">Explore My Profile</a>
-    </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hello! I am Kasyap M, an aspiring DevOps Engineer
-            passionate about cloud computing, automation,
-            infrastructure management and continuous integration
-            and continuous deployment.
-            <br><br>
-            I am focused on learning and working with AWS,
-            Kubernetes, Docker, Jenkins and Terraform to build,
-            deploy and manage scalable applications.
-        </p>
-    </section>
+        <div class="buttons">
+            <a href="#services" class="btn primary">
+                Explore My Skills
+            </a>
 
-    <section id="services">
-        <h2>My Technical Skills</h2>
-
-        <div class="services">
-
-            <div class="card">
-                <h3>AWS</h3>
-                <p>Cloud infrastructure and AWS services.</p>
-            </div>
-
-            <div class="card">
-                <h3>Kubernetes</h3>
-                <p>Container orchestration and deployment.</p>
-            </div>
-
-            <div class="card">
-                <h3>Docker</h3>
-                <p>Containerization and application management.</p>
-            </div>
-
-            <div class="card">
-                <h3>Jenkins</h3>
-                <p>CI/CD automation and build pipelines.</p>
-            </div>
-
-            <div class="card">
-                <h3>Terraform</h3>
-                <p>Infrastructure as Code (IaC).</p>
-            </div>
-
-            <div class="card">
-                <h3>CI/CD Pipeline</h3>
-                <p>Automating software build, test and deployment.</p>
-            </div>
-
+            <a href="#contact" class="btn secondary">
+                Contact Me
+            </a>
         </div>
-    </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
+    </div>
+</section>
+
+<!-- About -->
+
+<section id="about" class="reveal">
+
+    <div class="section-title">
+        <h2>About <span>Me</span></h2>
+        <p>Building the future through automation and cloud technology</p>
+    </div>
+
+    <div class="about-box">
+        Hello! I'm <strong>Kasyap M</strong>, an aspiring DevOps Engineer
+        passionate about cloud computing, automation and modern
+        infrastructure technologies.
+
+        <br><br>
+
+        I specialize in learning and working with AWS, Kubernetes,
+        Docker, Jenkins and Terraform. My goal is to build scalable
+        cloud infrastructure and efficient CI/CD pipelines while
+        continuously improving my technical skills.
+    </div>
+
+</section>
+
+<!-- Skills -->
+
+<section id="services" class="reveal">
+
+    <div class="section-title">
+        <h2>Technical <span>Skills</span></h2>
+        <p>Technologies I work with and continuously explore</p>
+    </div>
+
+    <div class="services">
+
+        <div class="card">
+            <div class="icon">☁️</div>
+            <h3>AWS</h3>
+            <p>Cloud computing, infrastructure and AWS services.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⎈</div>
+            <h3>Kubernetes</h3>
+            <p>Container orchestration and scalable deployments.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🐳</div>
+            <h3>Docker</h3>
+            <p>Containerization and application deployment.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚙️</div>
+            <h3>Jenkins</h3>
+            <p>Build automation and continuous integration.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏗️</div>
+            <h3>Terraform</h3>
+            <p>Infrastructure as Code and cloud provisioning.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h3>CI/CD Pipeline</h3>
+            <p>Automated build, testing and deployment workflows.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Contact -->
+
+<section id="contact" class="reveal">
+
+    <div class="section-title">
+        <h2>Get In <span>Touch</span></h2>
+        <p>Let's connect and build something amazing</p>
+    </div>
+
+    <div class="contact-box">
+
         <p>
-            Email:
+            ✉️ Email:
             <a href="mailto:kasyapkachu7@gmail.com">
                 kasyapkachu7@gmail.com
             </a>
         </p>
-        <br>
+
         <p>
-            Phone:
+            📞 Phone:
             <a href="tel:7558979310">
                 7558979310
             </a>
         </p>
-    </section>
 
-    <footer>
-        <p>&copy; 2026 Kasyap M. All Rights Reserved.</p>
-    </footer>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Kasyap M | Aspiring DevOps Engineer</p>
+    <p>Designed with passion for Cloud & Automation.</p>
+</footer>
+
+<script>
+
+// Scroll reveal animation
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+</script>
 
 </body>
 </html>
